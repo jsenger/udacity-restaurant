@@ -20,6 +20,8 @@ const cacheFiles = [
     'img/10.png'
 ];
 
+
+//Install.
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(staticCache).then(function (cache) {
@@ -28,6 +30,7 @@ self.addEventListener('install', function (e) {
     );
 });
 
+//Fetch.
 self.addEventListener('fetch', function (e) {
     e.respondWith(
         caches.match(e.request).then(function (response) {
