@@ -39,8 +39,9 @@ self.addEventListener('fetch', function (e) {
             } else {
                 return fetch(e.request)
                 .then(function(response) {
+                    const responseToCache = response.clone();
                     caches.open('restaurant-app-v1').then(function(cache) {
-                        cache.put(e.request, response);
+                        cache.put(e.request, responseToCache);
                     })
                     return response;
                 });
